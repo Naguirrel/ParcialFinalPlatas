@@ -1,6 +1,5 @@
 package com.naguirrel.uvgaguirrenorman.presentation.detail
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.naguirrel.uvgaguirrenorman.domain.model.Asset
@@ -12,10 +11,8 @@ import kotlinx.coroutines.launch
 
 class AssetDetailViewModel(
     private val repo: AssetRepository,
-    savedStateHandle: SavedStateHandle
+    private val assetId: String
 ) : ViewModel() {
-
-    private val assetId: String = checkNotNull(savedStateHandle["assetId"])
 
     private val _uiState = MutableStateFlow<UiState<Asset>>(UiState.Loading)
     val uiState: StateFlow<UiState<Asset>> = _uiState

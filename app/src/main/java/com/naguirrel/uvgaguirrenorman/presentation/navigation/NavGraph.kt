@@ -37,8 +37,9 @@ fun AppNavHost(
                 navArgument("assetId") { type = NavType.StringType }
             )
         ) { backStackEntry ->
+            val assetId = backStackEntry.arguments?.getString("assetId") ?: return@composable
             val vm: AssetDetailViewModel = viewModel(
-                factory = AssetDetailViewModelFactory(repo, backStackEntry)
+                factory = AssetDetailViewModelFactory(repo, assetId)
             )
             AssetDetailScreen(
                 viewModel = vm,
